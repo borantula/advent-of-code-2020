@@ -1,0 +1,28 @@
+{
+  "name": "bora-yalcin-advert-of-code-2019",
+  "version": "1.0.0",
+  "description": "Advert of Code 2019 ",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html",
+    "runnode": "nodemon --exec babel-node"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "lodash": "^4.17.15",
+    "mathjs": "^6.2.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.4",
+    "babel-jest": "^24.9.0",
+    "jest": "24.9.0",
+    "nodemon": "^2.0.2",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": [
+    "advert-of-code"
+  ]
+}
