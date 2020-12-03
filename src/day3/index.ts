@@ -1,7 +1,24 @@
 import { parseLinesToArray, parseToMatrix } from "../utils";
 import { testData, realData } from "./data";
 
-// console.log(goDown(parseToMatrix(realData), [3, 1]));
+console.log("Q1", goDown(parseToMatrix(realData), [3, 1]));
+
+// Question 2
+const ruleSets: [number, number][] = [
+  [1, 1],
+  [3, 1],
+  [5, 1],
+  [7, 1],
+  [1, 2]
+];
+
+const Q2 = ruleSets
+  .map((ruleSet) => goDown(parseToMatrix(realData), ruleSet))
+  .reduce((prevValue, curValue) => {
+    return prevValue * curValue;
+  }, 1);
+
+console.log("Answer Q2", Q2);
 
 function goDown(roadMap: string[][], ruleSet: [number, number]) {
   // finished when y === rangeBottom
@@ -61,22 +78,3 @@ function getNextIndex(
 function isItATree(roadMap: string[][], c: [number, number]) {
   return roadMap[c[1]][c[0]] === "#";
 }
-
-console.log("Q1", goDown(parseToMatrix(realData), [3, 1]));
-
-// Question 2
-const ruleSets: [number, number][] = [
-  [1, 1],
-  [3, 1],
-  [5, 1],
-  [7, 1],
-  [1, 2]
-];
-
-const Q2 = ruleSets
-  .map((ruleSet) => goDown(parseToMatrix(realData), ruleSet))
-  .reduce((prevValue, curValue) => {
-    return prevValue * curValue;
-  }, 1);
-
-console.log("Answer Q2", Q2);
