@@ -64,6 +64,10 @@ function checkRules(passport: any) {
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i] as Field;
     const val: string = passport[key];
+
+    if (!validators[key]) {
+      console.log(key, passport);
+    }
     if (!validators[key](val)) {
       return false;
     }
@@ -71,7 +75,7 @@ function checkRules(passport: any) {
   return true;
 }
 
-readFileContent("data.txt").then((c) => {
+readFileContent("input.txt").then((c) => {
   const passports = parsePassports(c);
   console.log(
     "Total Valid Q1:",
