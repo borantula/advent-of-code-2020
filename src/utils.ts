@@ -5,6 +5,10 @@ export function parseLinesToArray(str: string) {
   return str.split("\n").filter((e) => e);
 }
 
+export function parseByEmptyLinesToArray(str: string) {
+  return str.split("\n\n").filter((e) => e);
+}
+
 export function parseToMatrix(str: string) {
   return parseLinesToArray(str).map((e) => e.split(""));
 }
