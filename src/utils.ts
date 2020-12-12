@@ -13,6 +13,15 @@ export function parseToMatrix(str: string) {
   return parseLinesToArray(str).map((e) => e.split(""));
 }
 
+export function backToMatrixString(m: string[][]) {
+  return m.map((row) => row.join("")).join("\n");
+}
+
+export function logger(a: any) {
+  console.log(a);
+  return a;
+}
+
 // Greatest common devisor
 // export function gcd(a: number, b: number) {
 //   return !b ? a : gcd(b, a % b);
