@@ -1,4 +1,3 @@
-import { sum, multiply } from "lodash";
 import { logger, parseLinesToArray, readFileContent } from "../utils";
 
 function calculateBus({ min, buses }: { min: number; buses: number[] }) {
