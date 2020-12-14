@@ -84,7 +84,7 @@ function findWonderMoment(bags: Bag[]) {
   return total % mod;
 }
 
-console.log(findWonderMoment(toBags([1789, 37, 47, 1889])), 1202161486);
-console.log(findWonderMoment(toBags([67, 7, 59, 61])), 754018);
-console.log(findWonderMoment(toBags([67, 0, 7, 59, 61])), 779210);
-console.log(findWonderMoment(toBags([67, 7, 0, 59, 61])), 1261476);
+// console.log(findWonderMoment(toBags([1789, 37, 47, 1889])), 1202161486);
+// console.log(findWonderMoment(toBags([67, 7, 59, 61])), 754018);
+// console.log(findWonderMoment(toBags([67, 0, 7, 59, 61])), 779210);
+// console.log(findWonderMoment(toBags([67, 7, 0, 59, 61])), 1261476);
