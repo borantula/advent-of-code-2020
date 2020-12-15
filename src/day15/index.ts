@@ -25,9 +25,6 @@ function gamePlay(numbers: number[], indexToReturn = 2020) {
     ct++;
     val = getFromMemory(val);
     addToMemory(val, ct);
-    if (ct % 100000 === 0) {
-      console.log(ct, val);
-    }
   }
 
   return val;
