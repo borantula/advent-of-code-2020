@@ -6,26 +6,28 @@ import {
   parseByEmptyLinesToArray
 } from "../utils";
 
-// readFileContent("day16/input.txt")
-//   .then(parseByEmptyLinesToArray)
-//   .then((a) => a.map((r) => r.split("\n")))
-//   .then((parsed) => {
-//     const rules = parsed[0].map(parseRule);
-//     const yourTicket = parsed[1][1].split(",").map(Number);
-//     const otherTickets = parsed[2]
-//       .slice(1)
-//       .map((r) => r.split(",").map(Number));
+//Q1
+readFileContent("day16/input.txt")
+  .then(parseByEmptyLinesToArray)
+  .then((a) => a.map((r) => r.split("\n")))
+  .then((parsed) => {
+    const rules = parsed[0].map(parseRule);
+    const yourTicket = parsed[1][1].split(",").map(Number);
+    const otherTickets = parsed[2]
+      .slice(1)
+      .map((r) => r.split(",").map(Number));
 
-//     return { rules, yourTicket, otherTickets };
-//   })
-//   .then(({ rules, yourTicket, otherTickets }) => {
-//     const validated = otherTickets.map((t) => validateTicket(rules, t));
+    return { rules, yourTicket, otherTickets };
+  })
+  .then(({ rules, yourTicket, otherTickets }) => {
+    const validated = otherTickets.map((t) => validateTicket(rules, t));
 
-//     return flatten(validated).reduce((t, c) => t + c, 0);
-//   })
+    return flatten(validated).reduce((t, c) => t + c, 0);
+  })
 
-//   .then(logger);
+  .then(logger);
 
+// Q2
 readFileContent("day16/input.txt")
   .then(parseByEmptyLinesToArray)
   .then((a) => a.map((r) => r.split("\n")))
@@ -89,14 +91,6 @@ function runForList(
   return Object.entries(validBag).sort((a, b) => {
     return a[1].length > b[1].length ? 1 : -1;
   });
-}
-
-function getSingleItems(validBag: ReturnType<typeof runForList>) {
-  return validBag
-    .sort((a, b) => {
-      return a[1].length > b[1].length ? 1 : -1;
-    })
-    .map((a) => a[0]);
 }
 
 type RuleSet = [number, number][];
