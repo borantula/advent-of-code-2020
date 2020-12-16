@@ -48,14 +48,20 @@ readFileContent("day16/input.txt")
     return { rules, yourTicket, otherTickets: validated };
   })
   .then(({ rules, yourTicket, otherTickets }) => {
+    let finalBag: Record<number, string> = {};
+    const bag: number[] = [];
     const validBag = runForList(rules, yourTicket, otherTickets);
-    console.log(validBag);
+    validBag.forEach((a) => {
+      const toAdd = a[1].filter((v) => !bag.includes(v));
+      finalBag[toAdd[0]] = a[0];
+      bag.push(toAdd[0]);
+    });
 
-    const result = validBag.reduce((t, k, i) => {
+    const result = Object.values(finalBag).reduce((t, k, i) => {
       if (!k.startsWith("departure ")) {
         return t;
       }
-      console.log(yourTicket[i], t, i);
+
       return yourTicket[i] * t;
     }, 1);
     console.log(result);
@@ -65,27 +71,32 @@ readFileContent("day16/input.txt")
 function runForList(
   rules: Rule[],
   yourTicket: number[],
-  otherTickets: number[][],
-  validBag: string[] = []
-): string[] {
-  if (validBag.length === yourTicket.length) {
-    return validBag;
-  }
+  otherTickets: number[][]
+) {
+  const validBag: Record<string, number[]> = {};
 
-  for (let i = 0; i < yourTicket.length; i++) {
-    const indexNumbers = otherTickets.map((a) => a[i]);
-    const allValid = rules.filter(
-      (r) =>
-        !validBag.includes(r[0]) &&
-        indexNumbers.every((n) => validateNumber(r[1], n))
-    );
-    if (allValid.length === 1) {
-      console.log(allValid);
-      validBag.push(allValid[0][0]);
-      return runForList(rules, yourTicket, otherTickets, validBag);
+  rules.forEach((r) => {
+    validBag[r[0]] = [];
+    for (let i = 0; i < yourTicket.length; i++) {
+      const indexNumbers = otherTickets.map((a) => a[i]);
+      const allValid = indexNumbers.every((n) => validateNumber(r[1], n));
+      if (allValid) {
+        validBag[r[0]].push(i);
+      }
     }
-  }
-  return [];
+  });
+
+  return Object.entries(validBag).sort((a, b) => {
+    return a[1].length > b[1].length ? 1 : -1;
+  });
+}
+
+function getSingleItems(validBag: ReturnType<typeof runForList>) {
+  return validBag
+    .sort((a, b) => {
+      return a[1].length > b[1].length ? 1 : -1;
+    })
+    .map((a) => a[0]);
 }
 
 type RuleSet = [number, number][];
