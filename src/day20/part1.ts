@@ -1,7 +1,6 @@
-import { fromPairs, flatMap, flatMapDeep, flatten } from "lodash";
+import { flatten } from "lodash";
 import {
   logger,
-  parseToNumberMatrix,
   readFileContent,
   parseByEmptyLinesToArray,
   parseLinesToArray,
