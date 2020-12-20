@@ -40,6 +40,8 @@ readFileContent("day20/input.txt")
   .then((tilesObj) => {
     const matches: Record<string, string[]> = {};
     const counts: Record<string, number> = {};
+
+    // Find how many instances each side is used
     Object.entries(tilesObj).forEach((tile) => {
       const [tk, to] = tile;
       Object.keys(to).forEach((dk) => {
@@ -51,6 +53,7 @@ readFileContent("day20/input.txt")
         matches[side].push(tk);
       });
     });
+    // group them by count like {[tileId]:usedSideCount}
     const groupedByCount = flatten(
       Object.entries(matches)
         .filter((a) => a[1].length === 1)
