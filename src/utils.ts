@@ -13,6 +13,10 @@ export function parseToMatrix(str: string) {
   return parseLinesToArray(str).map((e) => e.split(""));
 }
 
+export function parseToNumberMatrix(str: string) {
+  return parseLinesToArray(str).map((e) => e.split("").map(Number));
+}
+
 export function backToMatrixString(m: string[][]) {
   return m.map((row) => row.join("")).join("\n");
 }
